@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Your Account — South Esquina</title>
+  <link rel="icon" type="image/jpeg" href="LOGO SITE.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="account.js"></script>
+</head>
+<body class="account-site">
+  <header class="site-header account-header">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="brand-mark" href="index.html" aria-label="South Esquina home"><img src="logo.jpg" alt="South Esquina"></a>
+  </header>
+  <main class="account-page">
+    <section class="account-card">
+      <p class="eyebrow">SOUTH ESQUINA · YOUR ACCOUNT</p>
+      <div class="account-tabs" id="accountTabs" role="tablist" aria-label="Account options">
+        <button class="account-tab" id="signInTab" type="button" role="tab" aria-selected="false" aria-controls="signInPanel">Sign in</button>
+        <button class="account-tab is-active" id="registerTab" type="button" role="tab" aria-selected="true" aria-controls="registerPanel">Sign up</button>
+      </div>
+      <div id="accountForms">
+        <section id="registerPanel" role="tabpanel" aria-labelledby="registerTab">
+          <h1 id="accountTitle">Create your account.</h1>
+          <p class="account-intro">Sign up for the latest pieces and updates from the South.</p>
+          <form id="accountForm" class="account-form">
+            <label for="accountName">Full name</label>
+            <input id="accountName" name="name" autocomplete="name" maxlength="100" required>
+            <label for="accountEmail">Email address</label>
+            <input id="accountEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+            <label for="accountPassword">Password</label>
+            <input id="accountPassword" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="200" required>
+            <p class="account-password-note">Use at least 8 characters.</p>
+            <button class="button button-dark" type="submit">Create account</button>
+          </form>
+          <p class="account-message" id="accountMessage" aria-live="polite"></p>
+        </section>
+        <section id="signInPanel" role="tabpanel" aria-labelledby="signInTab" hidden>
+          <h1 id="signInTitle">Welcome back.</h1>
+          <p class="account-intro">Sign in to your South Esquina account.</p>
+          <form id="signInForm" class="account-form">
+            <label for="signInEmail">Email address</label>
+            <input id="signInEmail" name="email" type="email" autocomplete="email" maxlength="254" required>
+            <label for="signInPassword">Password</label>
+            <input id="signInPassword" name="password" type="password" autocomplete="current-password" maxlength="200" required>
+            <button class="button button-dark" type="submit">Sign in</button>
+          </form>
+          <p class="account-message" id="signInMessage" aria-live="polite"></p>
+        </section>
+      </div>
+      <section id="signedInPanel" aria-labelledby="signedInTitle" hidden>
+        <h1 id="signedInTitle">You're signed in.</h1>
+        <p class="account-intro">Welcome, <strong id="signedInName"></strong>.</p>
+        <p class="signed-in-email" id="signedInEmail"></p>
+        <button class="button account-signout-button" id="accountSignOut" type="button">Sign out</button>
+        <p class="account-message" id="signOutMessage" aria-live="polite"></p>
+      </section>
+      <a class="account-back-link" href="index.html">Back to South Esquina</a>
+    </section>
+  </main>
+  <footer class="account-footer">FRESH FROM THE SOUTH · READY FOR WHEREVER</footer>
+</body>
+</html>

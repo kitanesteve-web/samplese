@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Shop South Esquina tees, rooted in Santa Rosa, Laguna.">
+  <title>South Esquina — Tee</title>
+  <link rel="icon" type="image/jpeg" href="LOGO SITE.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="product-site">
+  <header class="site-header" id="top">
+    <button class="icon-button menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <span class="menu-lines"><i></i><i></i><i></i></span>
+    </button>
+    <nav class="main-nav home-only-nav" id="mainNav" aria-label="Main navigation">
+      <a class="nav-link nav-home-button" href="index.html">Home</a>
+    </nav>
+    <a class="brand-mark" href="index.html" aria-label="South Esquina home">
+      <img src="logo.jpg" alt="South Esquina">
+    </a>
+    <div class="header-actions">
+      <a class="account-trigger" href="account.html" aria-label="Your account" title="Your account">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20a7 7 0 0 1 14 0"></path></svg>
+      </a>
+      <button class="cart-trigger" id="cartTrigger" type="button" aria-label="Open shopping cart, 0 items" aria-expanded="false" aria-controls="cartPanel">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 1.9-1.4L21 9H6"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg>
+        <span class="bag-count" id="cartCount" aria-hidden="true">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="product-page">
+    <nav class="product-breadcrumbs" id="productBreadcrumbs" aria-label="Breadcrumb" hidden>
+      <a href="index.html">Home</a><span aria-hidden="true">/</span>
+      <a id="productCategoryBreadcrumb" href="category.html?category=tees">Tees</a><span aria-hidden="true">/</span>
+      <span id="detailBreadcrumbName">Tee</span>
+    </nav>
+
+    <section class="product-detail" id="productDetail" aria-labelledby="detailProductName" hidden>
+      <div class="product-gallery" id="productGallery" aria-label="Product photos and size chart" tabindex="0">
+        <div class="product-gallery-tile">
+          <span>PHOTO COMING SOON</span>
+          <small id="detailGalleryLabel">South Esquina tee</small>
+        </div>
+        <div class="product-gallery-tile"><span>PHOTO COMING SOON</span></div>
+        <div class="product-gallery-tile"><span>PHOTO COMING SOON</span></div>
+      </div>
+
+      <div class="product-information">
+        <p class="eyebrow" id="productCategoryLabel">SOUTH ESQUINA · TEES</p>
+        <h1 id="detailProductName"></h1>
+        <p class="product-price" id="detailProductPrice"></p>
+        <p class="product-description" id="detailProductDescription" hidden></p>
+        <a class="product-reviews-link" href="#productReviews" aria-label="Read customer reviews">
+          <span class="product-stars" id="productReviewStars" aria-hidden="true">☆☆☆☆☆</span>
+          <span id="productReviewCount">Reviews (0)</span>
+        </a>
+
+        <div class="product-size-heading">
+          <p class="product-size-label">Select size</p>
+          <button class="size-chart-button" id="sizeChartButton" type="button" hidden>Size chart</button>
+        </div>
+        <div class="product-sizes" id="productSizes" role="group" aria-label="Choose a size"></div>
+        <p class="size-error" id="sizeError" aria-live="polite"></p>
+        <button class="button button-dark product-add-button" id="detailAddToCart" type="button">Add to cart</button>
+        <p class="product-added-message" id="productAddedMessage" aria-live="polite"></p>
+
+        <nav class="product-info-links" aria-label="Product information">
+          <a href="#productFeatures">Features</a>
+          <a href="#productReviews">Reviews</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="product-not-found" id="productNotFound">
+      <p class="eyebrow">SOUTH ESQUINA · TEES</p>
+      <h1>We couldn't find that piece.</h1>
+      <p>Head back to the Tees collection to explore the drop.</p>
+      <a href="category.html?category=tees">View the Tees</a>
+    </section>
+
+    <section class="product-content-section" id="productFeatures" hidden>
+      <h2>Features</h2>
+      <ul class="product-features">
+        <li><span>Collection</span><span id="productCollectionValue">South Esquina · Tees</span></li>
+        <li><span>Designed for</span><span>Everyday wear</span></li>
+      </ul>
+    </section>
+
+    <section class="product-content-section" id="productReviews" hidden>
+      <h2>Customer reviews <span class="review-count-heading" id="reviewCountHeading"></span></h2>
+      <p class="product-reviews-empty" id="productReviewsEmpty">No reviews yet.</p>
+      <div class="product-review-list" id="productReviewList"></div>
+      <form class="product-review-form" id="productReviewForm" hidden>
+        <h3>Write a review</h3>
+        <fieldset class="review-rating">
+          <legend>Your rating</legend>
+          <div class="review-rating-options">
+            <input id="rating5" type="radio" name="rating" value="5" required>
+            <label for="rating5" aria-label="5 stars">★</label>
+            <input id="rating4" type="radio" name="rating" value="4">
+            <label for="rating4" aria-label="4 stars">★</label>
+            <input id="rating3" type="radio" name="rating" value="3">
+            <label for="rating3" aria-label="3 stars">★</label>
+            <input id="rating2" type="radio" name="rating" value="2">
+            <label for="rating2" aria-label="2 stars">★</label>
+            <input id="rating1" type="radio" name="rating" value="1">
+            <label for="rating1" aria-label="1 star">★</label>
+          </div>
+        </fieldset>
+        <label for="reviewComment">Comment <span>Optional</span></label>
+        <textarea id="reviewComment" name="comment" rows="4" maxlength="1000" placeholder="Share what you think about this piece."></textarea>
+        <button class="button button-dark" type="submit">Submit review</button>
+        <p class="review-form-message" id="reviewFormMessage" aria-live="polite"></p>
+      </form>
+      <p class="review-signin-prompt" id="reviewSignInPrompt" hidden>
+        <a href="account.html?mode=signin">Sign in</a> to leave a review.
+      </p>
+    </section>
+
+    <section class="product-content-section" id="peopleAlsoViewedSection" aria-labelledby="peopleAlsoViewedTitle" hidden>
+      <h2 id="peopleAlsoViewedTitle">People also viewed</h2>
+      <div class="people-also-viewed" id="peopleAlsoViewed"></div>
+    </section>
+  </main>
+
+  <div class="cart-overlay" id="cartOverlay" hidden></div>
+  <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="cart-heading">
+      <div>
+        <p class="eyebrow">SOUTH ESQUINA</p>
+        <h2 id="cartTitle">Your cart <span id="cartItemCount">(0)</span></h2>
+      </div>
+      <button class="close-button" id="cartClose" type="button" aria-label="Close shopping cart">×</button>
+    </div>
+    <div class="cart-column-headings"><span>PRODUCT</span><span>TOTAL</span></div>
+    <div class="cart-items" id="cartItems" hidden></div>
+    <div class="cart-empty" id="cartEmpty">
+      <svg class="empty-bag-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 17h28l-2.2 25H12.2L10 17Z"></path><path d="M17 18v-5a7 7 0 0 1 14 0v5"></path></svg>
+      <h3>Your cart is empty</h3>
+      <p>Your next favorite is just around the corner.</p>
+      <button class="button button-dark continue-link" id="continueShopping" type="button">Continue shopping</button>
+    </div>
+    <div class="cart-summary">
+      <div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">₱0.00 PHP</strong></div>
+      <p>Taxes and shipping calculated at checkout.</p>
+      <button class="button button-dark checkout-button" type="button" disabled>Checkout</button>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="footer-top section-wrap">
+      <div class="footer-brand"><p>Fresh from the South.<br>Ready for wherever.</p></div>
+      <div class="footer-column">
+        <p class="eyebrow">CONTACT</p>
+        <a href="mailto:southesquinalgl@gmail.com">southesquinalgl@gmail.com</a>
+        <a href="tel:+639244430173">+63 924 443 0173</a>
+        <p>Santa Rosa, Laguna, Philippines</p>
+      </div>
+      <div class="footer-column footer-social">
+        <p class="eyebrow">SOCIAL MEDIA</p>
+        <div class="social-links">
+          <a class="social-link" href="https://www.instagram.com/southesquina?dlrf=MXdzbnk3cjhuazRycA==" target="_blank" rel="noopener noreferrer" aria-label="South Esquina on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle class="social-icon-dot" cx="17.7" cy="6.6" r="1"></circle></svg>
+          </a>
+          <a class="social-link" href="https://www.facebook.com/share/1VQEYNibNZ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="South Esquina on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H8v3.1h2.8v8z"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom section-wrap">
+      <span>© 2025 SOUTH ESQUINA</span>
+      <span>DESIGNED IN SANTA ROSA, LAGUNA</span>
+      <a href="#top">BACK TO TOP ↑</a>
+    </div>
+    <div class="team-credit">MADE FROM HERE MADE FOR EVERY WEAR</div>
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

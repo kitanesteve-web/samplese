@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Store Admin — South Esquina</title>
+  <link rel="icon" type="image/jpeg" href="LOGO SITE.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="admin.js"></script>
+</head>
+<body class="admin-site">
+  <header class="admin-header">
+    <a class="admin-brand" href="index.html"><img src="logo.jpg" alt="South Esquina"><span>STORE ADMIN</span></a>
+    <a class="admin-store-link" href="index.html">View store ↗</a>
+  </header>
+  <main class="admin-main">
+    <section class="admin-login-card" id="adminLogin">
+      <p class="eyebrow">SOUTH ESQUINA · LOCAL STORE</p>
+      <h1>Admin sign in</h1>
+      <p>Sign in to manage products and view customer registrations.</p>
+      <form id="adminLoginForm" class="account-form">
+        <label for="adminUsername">Username</label>
+        <input id="adminUsername" name="username" autocomplete="username" required>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <button class="button button-dark" type="submit">Sign in</button>
+      </form>
+      <p class="admin-message" id="adminLoginMessage" aria-live="polite"></p>
+      <p class="admin-setup-note">For this local site, the admin account is created the first time the server starts.</p>
+    </section>
+
+    <section class="admin-dashboard" id="adminDashboard" hidden>
+      <div class="admin-dashboard-heading">
+        <div><p class="eyebrow">SOUTH ESQUINA · STORE ADMIN</p><h1>Store dashboard</h1></div>
+        <button class="button admin-logout" id="adminLogout" type="button">Sign out</button>
+      </div>
+      <nav class="admin-tabs" aria-label="Admin sections">
+        <button class="admin-tab is-active" type="button" data-admin-view="products">Products</button>
+        <button class="admin-tab" type="button" data-admin-view="accounts">Customer accounts <span id="adminAccountTabCount">0</span></button>
+        <button class="admin-tab" type="button" data-admin-view="reviews">Reviews <span id="adminReviewTabCount">0</span></button>
+      </nav>
+
+      <section class="admin-view" id="adminProductsView">
+        <div class="admin-products-layout">
+          <form id="productForm" class="admin-form-card">
+            <div class="admin-form-heading"><div><p class="eyebrow">CATALOG</p><h2 id="productFormTitle">Add a product</h2></div></div>
+            <input id="productId" name="productId" type="hidden">
+            <label for="productName">Product name</label>
+            <input id="productName" name="name" maxlength="120" required>
+            <label for="productCategory">Category</label>
+            <select id="productCategory" name="category" required>
+              <option>Tees</option><option>Hoodies</option><option>Sweaters</option><option>Polos</option><option>Pants</option><option>Shorts</option>
+            </select>
+            <label for="productPrice">Price (PHP)</label>
+            <input id="productPrice" name="price" type="number" min="0.01" max="10000000" step="0.01" required>
+            <label for="productSizes">Available sizes <span>Separate with commas</span></label>
+            <input id="productSizes" name="sizes" placeholder="S, M, L, XL" required>
+            <label for="productStock">Quantity per size <span>Format: S: 5, M: 5</span></label>
+            <input id="productStock" name="stock" value="S: 0, M: 0, L: 0, XL: 0" placeholder="S: 0, M: 0, L: 0, XL: 0" required>
+            <label for="productDescription">Description <span>Optional</span></label>
+            <textarea id="productDescription" name="description" rows="3" maxlength="2000"></textarea>
+            <label for="productFrontImage">Front image <span id="frontImageNote">Required for a new product · PNG, JPG, WebP · max 8 MB</span></label>
+            <input id="productFrontImage" name="frontImage" type="file" accept="image/png,image/jpeg,image/webp">
+            <label for="productBackImage">Back image <span>Optional</span></label>
+            <input id="productBackImage" name="backImage" type="file" accept="image/png,image/jpeg,image/webp">
+            <label for="productSizeChart">Size chart image <span>Optional</span></label>
+            <input id="productSizeChart" name="sizeChartImage" type="file" accept="image/png,image/jpeg,image/webp">
+            <div class="admin-checkboxes">
+              <label><input id="productNewRelease" name="isNewRelease" type="checkbox"> Show in New Releases</label>
+              <label><input id="productPopular" name="isPopular" type="checkbox"> Show in Most Popular</label>
+            </div>
+            <div class="admin-form-actions">
+              <button class="button button-dark" id="productSaveButton" type="submit">Add product</button>
+              <button class="button admin-cancel-edit" id="cancelProductEdit" type="button" hidden>Cancel edit</button>
+            </div>
+            <p class="admin-message" id="productFormMessage" aria-live="polite"></p>
+          </form>
+          <section class="admin-products-panel" aria-labelledby="adminProductsTitle">
+            <div class="admin-panel-heading"><div><p class="eyebrow">YOUR CATALOG</p><h2 id="adminProductsTitle">Products <span id="adminProductCount">0</span></h2></div><button class="admin-refresh" id="refreshProducts" type="button">Refresh</button></div>
+            <div id="adminProductList" class="admin-product-list"></div>
+            <p class="admin-message" id="productListMessage" aria-live="polite"></p>
+          </section>
+        </div>
+      </section>
+
+      <section class="admin-view" id="adminAccountsView" hidden>
+        <div class="admin-panel-heading"><div><p class="eyebrow">CUSTOMER REGISTRATIONS</p><h2>Accounts <span id="adminAccountCount">0</span></h2></div><button class="admin-refresh" id="refreshAccounts" type="button">Refresh</button></div>
+        <p class="admin-privacy-note">Only customer names, email addresses, and registration dates are shown. Passwords are never displayed.</p>
+        <div class="admin-table-wrap">
+          <table class="admin-account-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Registered</th></tr></thead>
+            <tbody id="adminAccountList"></tbody>
+          </table>
+        </div>
+        <p class="admin-message" id="accountListMessage" aria-live="polite"></p>
+      </section>
+
+      <section class="admin-view" id="adminReviewsView" hidden>
+        <div class="admin-panel-heading">
+          <div><p class="eyebrow">CUSTOMER FEEDBACK</p><h2>Product reviews <span id="adminReviewCount">0</span></h2></div>
+          <button class="admin-refresh" id="refreshReviews" type="button">Refresh</button>
+        </div>
+        <p class="admin-privacy-note">Hide a review to remove it from the storefront, or delete it permanently.</p>
+        <div class="admin-review-list" id="adminReviewList"></div>
+        <p class="admin-message" id="reviewListMessage" aria-live="polite"></p>
+      </section>
+    </section>
+  </main>
+  <footer class="account-footer">LOCAL STORE ADMIN · NOT CONFIGURED FOR PUBLIC HOSTING</footer>
+</body>
+</html>
